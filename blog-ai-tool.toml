@@ -1,31 +1,31 @@
 [openai]
-api_key = ""  # Can be empty, recommend using environment variables or CLI arguments
-base_url = "https://api.openai.com/v1"  # OpenAI default API endpoint
-model = "gpt-4o"  # Default model
+api_key = ""  # Can be empty, recommend using environment variables or CLI arguments 可以为空，建议使用环境变量或命令行参数
+base_url = "https://api.openai.com/v1"  # OpenAI default API endpoint OpenAI默认API端点
+model = "gpt-4o"  # Default model 默认模型
 
 [blog]
-language = "auto"  # auto detect language or specify language like "English" etc
+language = "auto"  # auto detect language or specify language like "English" etc. 自动检测语言或指定语言如"English"等
 
 [metadata]
-use = false  # Whether to generate metadata
-post_directory = "content/posts/zh"  # articles directory
-generate_title = false  # Whether to generate title
-generate_description = false  # Whether to generate description
-generate_keywords = false  # Whether to generate keywords
-max_title_length = 100  # Maximum title length
-max_description_length = 300  # Maximum description length
-keyword_count = 5  # Number of keywords to generate
-ai_summary = false  # Whether to generate ai summary
-ai_summary_length = 1000  # Maximum ai summary length
+use = true  # Whether to generate metadata 是否生成元数据
+post_directory = "content/posts/zh"  # articles directory 文章目录
+generate_title = false  # Whether to generate title 是否生成标题
+generate_description = false  # Whether to generate description 是否生成描述
+generate_keywords = false  # Whether to generate keywords 是否生成关键词
+max_title_length = 100  # Maximum title length 最大标题长度
+max_description_length = 300  # Maximum description length 最大描述长度
+keyword_count = 5  # Number of keywords to generate 要生成的关键词数量
+ai_summary = false  # Whether to generate ai summary 是否生成AI摘要
+ai_summary_length = 1000  # Maximum ai summary length 最大AI摘要长度
 
 [translation]
-use = true  # Whether to translate articles
-post_directory = "content/posts/zh"  # articles directory
+use = false  # Whether to translate articles 是否翻译文章
+post_directory = "content/posts/zh"  # articles directory 文章目录
 target_languages = [
     { language = "English", code = "en" },
     { language = "Japanese", code = "ja" },
-    # Add more target languages as needed
+    # Add more target languages as needed 根据需要添加更多目标语言
 ]
 
 [system]
-retry_count = 3  # Number of retry attempts on failure
+retry_count = 3  # Number of retry attempts on failure 失败重试次数
