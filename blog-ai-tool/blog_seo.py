@@ -1,16 +1,12 @@
 import frontmatter
 import os
-from openai import OpenAI
-from typing import Dict, Optional
-import json
-import re
+from typing import Dict
+from .base_processor import BaseProcessor
 
-class HugoBlogProcessor:
+class HugoBlogProcessor(BaseProcessor):
     def __init__(self, api_key: str, base_url: str, model: str, language: str, config: dict):
-        self.client = OpenAI(api_key=api_key, base_url=base_url)
-        self.model = model
+        super().__init__(api_key, base_url, model, config)
         self.language = language
-        self.config = config
         if self.config["blog"]["language"] == "auto":
             self.language = "the same as the blog content"
 
@@ -28,29 +24,11 @@ Content:
 
 Format response as JSON with keys: title, description, keywords"""
 
-        response = self.client.chat.completions.create(
-            model=self.model,
-            messages=[{"role": "user", "content": prompt}],
-            temperature=0.3,
-        )
-        
-        # Simplified regular expression to extract JSON content
-        json_pattern = r'\{.*?\}'
-
-        # Search for JSON in the response
-        match = re.search(json_pattern, response.choices[0].message.content, re.DOTALL)
-        
-        if match:
-            try:
-                return json.loads(match.group(0))
-            except json.JSONDecodeError:
-                print("Failed to parse JSON from the extracted content.")
-        
-        print("No valid JSON found in the response.")
-        return {}
+        response = self._call_openai(prompt)
+        return self._extract_json(response)
 
     def process_markdown(self, file_path: str) -> None:
-        """Process a markdown file and update its front matter"""
+        """Process markdown file and update its front matter"""
         with open(file_path, 'r', encoding='utf-8') as f:
             post = frontmatter.load(f)
         
@@ -64,7 +42,7 @@ Format response as JSON with keys: title, description, keywords"""
             generated = self.generate_metadata(content)
             needs_update = True
 
-            # Update missing fields only
+            # Only update missing fields
             if not metadata.get('title'):
                 metadata['title'] = generated['title']
             if not metadata.get('description'):
@@ -81,7 +59,7 @@ Format response as JSON with keys: title, description, keywords"""
                 f.write(frontmatter.dumps(new_post))
 
 def process_blog_directory(directory: str, api_key: str, base_url: str, model: str, language: str, config: dict):
-    """Process all markdown files in a directory"""
+    """Process all markdown files in the directory"""
     processor = HugoBlogProcessor(api_key, base_url, model, language, config)
     retry_count = config["system"]["retry_count"]
     

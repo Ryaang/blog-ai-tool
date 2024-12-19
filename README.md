@@ -28,6 +28,8 @@ blog-ai-tool --config my-config.toml
 blog-ai-tool --directory content/posts --model gpt-4
 ```
 
+Disclaimer: AI may destory your blog, please use git to **backup** your blog before use. Also, its not recommended to use this tool without **reviewing** the generated content. Always check the generated content before publishing. The best time to use this tool is right after you have written the blog post, before publishing.
+
 ### Python API
 
 ```python
