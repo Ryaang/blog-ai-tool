@@ -1,5 +1,5 @@
 # 🤖 博客 AI 工具
-[![PyPI - Version](https://img.shields.io/pypi/v/blog-ai-tool)](https://pypi.org/project/blog-ai-tool/) [![PyPI - License](https://img.shields.io/pypi/l/blog-ai-tool)](https://pypi.org/project/blog-ai-tool/)   [![Static Badge](https://img.shields.io/badge/%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87-8A2BE2)](README-Zh.md) [![Static Badge](https://img.shields.io/badge/English-blue)](README.md)
+[![PyPI - Version](https://img.shields.io/pypi/v/blog-ai-tool)](https://pypi.org/project/blog-ai-tool/) ![GitHub License](https://img.shields.io/github/license/ryaang/blog-ai-tool)   [![Static Badge](https://img.shields.io/badge/%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87-8A2BE2)](README-Zh.md) [![Static Badge](https://img.shields.io/badge/English-blue)](README.md)
 
 🌟 适用于 Hexo、Hugo 等博客框架的 AI 工具，只要你使用 markdown 格式管理博客即可使用。[English](README.md)
 
