@@ -1,4 +1,4 @@
-# Blog Auto Seo
+# Blog AI tool
 Genertate seo content for static blog post with AI, support blog framework like Hexo, Hugo, etc.
 
 ## Features

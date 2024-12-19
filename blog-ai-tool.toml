@@ -1,5 +1,5 @@
 [openai]
-api_key = ""  # 可以为空，将使用环境变量或命令行参数
+api_key = ""  # 可以为空，推荐使用环境变量或命令行参数来防止泄露
 base_url = "https://api.openai.com/v1"  # OpenAI 默认 API 地址
 model = "gpt-4o"  # 默认模型
 
