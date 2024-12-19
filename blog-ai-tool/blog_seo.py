@@ -58,7 +58,7 @@ Format response as JSON with keys: title, description, keywords"""
             with open(file_path, 'w', encoding='utf-8') as f:
                 f.write(frontmatter.dumps(new_post))
 
-def process_blog_directory(directory: str, api_key: str, base_url: str, model: str, language: str, config: dict):
+def metadata_blog_directory(directory: str, api_key: str, base_url: str, model: str, language: str, config: dict):
     """Process all markdown files in the directory"""
     processor = HugoBlogProcessor(api_key, base_url, model, language, config)
     retry_count = config["system"]["retry_count"]
