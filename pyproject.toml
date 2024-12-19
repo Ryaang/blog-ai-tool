@@ -5,12 +5,19 @@ build-backend = "hatchling.build"
 [project]
 name = "blog-ai-tool"
 version = "0.1.2"
-description = "Generate seo content (title, description, keywords) for blog post with AI, support blog framework like Hexo, Hugo, etc."
+description = "Useful ai tools for markdown blog posts, support ai seo, ai summary, ai translation, etc. Compatible with blog framework like Hexo, Hugo, etc."
 readme = "README.md"
 requires-python = ">=3.8"
 license = { file = "LICENSE" }
 authors = [
     { name = "Ryan Yang", email = "code@zair.top" }
+]
+keywords = [
+    "blog",
+    "seo",
+    "ai",
+    "hugo",
+    "hexo"
 ]
 dependencies = [
     "openai>=1.58.1",
@@ -23,3 +30,7 @@ blog-ai-tool = "blog-ai-tool.main:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["blog-ai-tool"]
+
+[project.urls]
+homepage = "https://github.com/ryanng/blog-ai-tool"
+repository = "https://github.com/ryanng/blog-ai-tool"
