@@ -13,16 +13,22 @@ class HugoBlogProcessor(BaseProcessor):
     def generate_metadata(self, content: str) -> Dict[str, str]:
         """Generate metadata using OpenAI based on content"""
         metadata_config = self.config["metadata"]
+        ai_summary_config = metadata_config["ai_summary"]
+        if ai_summary_config:
+            ai_summary_task = f"""4. Based on the following blog content, generate a summary (max {metadata_config['ai_summary_length']} words with plain text)"""
+        else:
+            ai_summary_task = ""
         prompt = f"""Based on the following blog content, generate:
-1. A concise title (max {metadata_config['max_title_length']} chars)
-2. A brief description (max {metadata_config['max_description_length']} chars)
+1. A concise title (max {metadata_config['max_title_length']} words)
+2. A brief description (max {metadata_config['max_description_length']} words)
 3. {metadata_config['keyword_count']} relevant keywords (space-separated)
+{ai_summary_task}
 The language should be {self.language}.
 
 Content:
 {content}
 
-Format response as JSON with keys: title, description, keywords"""
+Format response as JSON with keys: title, description, keywords{", summary" if ai_summary_config else ""}"""
 
         response = self._call_openai(prompt)
         return self._extract_json(response)
@@ -49,6 +55,9 @@ Format response as JSON with keys: title, description, keywords"""
                 metadata['description'] = generated['description']
             if not metadata.get('keywords'):
                 metadata['keywords'] = generated['keywords']
+            if generated.get("summary") and not metadata.get('summary'):
+                metadata['summary'] = generated['summary']
+
 
         if needs_update:
             # Create new post with updated metadata

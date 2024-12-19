@@ -15,6 +15,8 @@ generate_keywords = false  # Whether to generate keywords
 max_title_length = 100  # Maximum title length
 max_description_length = 300  # Maximum description length
 keyword_count = 5  # Number of keywords to generate
+ai_summary = false  # Whether to generate ai summary
+ai_summary_length = 1000  # Maximum ai summary length
 
 [translation]
 use = true  # Whether to translate articles
