@@ -11,6 +11,8 @@
 - 🌐 Support multiple language
 - 🧠 Support multiple AI model like OpenAI, Qwen, Llama, etc. As long as the model provides openai-compatible API.
 
+Tips: You can get free LLM model (Qwen, Gemini, Llama, etc.) from [Cloudflare](https://developers.cloudflare.com/workers-ai/) or [Openrouter](https://openrouter.ai/models?order=pricing-low-to-high)
+
 ## 🛠️ Installation
 
 ```bash
@@ -26,7 +28,7 @@ pip install blog-ai-tool
 blog-ai-tool
 
 # if the above command is not working, try to use this following command instead
-python -m blog_ai_tool
+python -m blog-ai-tool
 
 # Using custom config file
 blog-ai-tool --config my-config.toml
@@ -40,7 +42,7 @@ Disclaimer: AI may destory your blog, please use git to **backup** your blog bef
 ### Python API
 
 ```python
-from blog_ai_tool import HugoBlogProcessor, load_config
+from blog-ai-tool import HugoBlogProcessor, load_config
 
 # Load configuration
 config = load_config("blog-ai-tool.toml")

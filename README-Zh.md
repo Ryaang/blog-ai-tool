@@ -11,6 +11,8 @@
 - 🌐 支持多语言
 - 🧠 支持 OpenAI、Qwen、Llama 等多种 AI 模型，只要该模型提供兼容 OpenAI 的 API 即可
 
+提示：你可以从 [Cloudflare](https://developers.cloudflare.com/workers-ai/) 或 [Openrouter](https://openrouter.ai/models?order=pricing-low-to-high) 获取免费的大模型（千问、Gemini、Llama 等）
+
 ## 🛠️ 安装
 
 ```bash
@@ -26,7 +28,7 @@ pip install blog-ai-tool
 blog-ai-tool
 
 # 如果上述命令不起作用，请尝试使用以下命令
-python -m blog_ai_tool
+python -m blog-ai-tool
 
 # 使用自定义配置文件
 blog-ai-tool --config my-config.toml
@@ -40,7 +42,7 @@ blog-ai-tool --directory content/posts --model gpt-4
 ### Python API
 
 ```python
-from blog_ai_tool import HugoBlogProcessor, load_config
+from blog-ai-tool import HugoBlogProcessor, load_config
 
 # 加载配置
 config = load_config("blog-ai-tool.toml")
