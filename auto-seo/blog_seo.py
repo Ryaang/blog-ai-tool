@@ -14,9 +14,9 @@ class HugoBlogProcessor:
     def generate_metadata(self, content: str) -> Dict[str, str]:
         """Generate metadata using OpenAI based on content"""
         prompt = f"""Based on the following blog content, generate:
-1. A concise title (max 60 chars)
-2. A brief description (max 160 chars)
-3. 3-5 relevant keywords (comma-separated)
+1. A concise title (max 100 chars)
+2. A brief description (max 300 chars)
+3. 3-5 relevant keywords (space-separated)
 The language should be {self.language}.
 
 Content:
@@ -83,5 +83,12 @@ def process_blog_directory(directory: str, api_key: str, base_url: str, model: s
     for root, _, files in os.walk(directory):
         for file in files:
             if file.endswith('.md'):
-                file_path = os.path.join(root, file)
-                processor.process_markdown(file_path) 
+                fail_tolerance = 3
+                while fail_tolerance > 0:
+                    try:
+                        file_path = os.path.join(root, file)
+                        processor.process_markdown(file_path) 
+                        break
+                    except Exception as e:
+                        print(f"Failed to process {file_path}: {e} \n Retrying......")
+                        fail_tolerance -= 1
