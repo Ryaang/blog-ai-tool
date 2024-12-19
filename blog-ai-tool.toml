@@ -1,0 +1,19 @@
+[openai]
+api_key = ""  # 可以为空，将使用环境变量或命令行参数
+base_url = "https://api.openai.com/v1"  # OpenAI 默认 API 地址
+model = "gpt-4o"  # 默认模型
+
+[blog]
+directory = "content/posts"  # Hugo博客文章目录
+language = "auto"  # 自动检测语言，或指定具体语言如 "en", "zh-CN" 等
+
+[metadata]
+generate_title = true  # 是否生成标题
+generate_description = true  # 是否生成描述
+generate_keywords = true  # 是否生成关键词
+max_title_length = 100  # 标题最大长度
+max_description_length = 300  # 描述最大长度
+keyword_count = 5  # 生成关键词数量
+
+[system]
+retry_count = 3  # 失败重试次数

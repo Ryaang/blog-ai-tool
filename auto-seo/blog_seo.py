@@ -6,17 +6,21 @@ import json
 import re
 
 class HugoBlogProcessor:
-    def __init__(self, api_key: str, base_url: str, model: str, language: str):
+    def __init__(self, api_key: str, base_url: str, model: str, language: str, config: dict):
         self.client = OpenAI(api_key=api_key, base_url=base_url)
         self.model = model
         self.language = language
+        self.config = config
+        if self.config["metadata"]["language"] == "auto":
+            self.language = "the same as the blog content"
 
     def generate_metadata(self, content: str) -> Dict[str, str]:
         """Generate metadata using OpenAI based on content"""
+        metadata_config = self.config["metadata"]
         prompt = f"""Based on the following blog content, generate:
-1. A concise title (max 100 chars)
-2. A brief description (max 300 chars)
-3. 3-5 relevant keywords (space-separated)
+1. A concise title (max {metadata_config['max_title_length']} chars)
+2. A brief description (max {metadata_config['max_description_length']} chars)
+3. {metadata_config['keyword_count']} relevant keywords (space-separated)
 The language should be {self.language}.
 
 Content:
@@ -76,19 +80,21 @@ Format response as JSON with keys: title, description, keywords"""
             with open(file_path, 'w', encoding='utf-8') as f:
                 f.write(frontmatter.dumps(new_post))
 
-def process_blog_directory(directory: str, api_key: str, base_url: str, model: str, language: str):
+def process_blog_directory(directory: str, api_key: str, base_url: str, model: str, language: str, config: dict):
     """Process all markdown files in a directory"""
-    processor = HugoBlogProcessor(api_key, base_url, model, language)
+    processor = HugoBlogProcessor(api_key, base_url, model, language, config)
+    retry_count = config["system"]["retry_count"]
     
     for root, _, files in os.walk(directory):
         for file in files:
             if file.endswith('.md'):
-                fail_tolerance = 3
-                while fail_tolerance > 0:
+                attempts = retry_count
+                while attempts > 0:
                     try:
                         file_path = os.path.join(root, file)
                         processor.process_markdown(file_path) 
                         break
                     except Exception as e:
-                        print(f"Failed to process {file_path}: {e} \n Retrying......")
-                        fail_tolerance -= 1
+                        print(f"Failed to process {file_path}: {e}")
+                        print(f"Attempts remaining: {attempts-1}")
+                        attempts -= 1
