@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "blog-ai-tool"
-version = "0.1.0"
+version = "0.1.1"
 description = "Generate seo content (title, description, keywords) for blog post with AI, support blog framework like Hexo, Hugo, etc."
 readme = "README.md"
 requires-python = ">=3.8"

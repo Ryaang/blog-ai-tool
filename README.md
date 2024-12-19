@@ -2,7 +2,7 @@
 Genertate seo content for static blog post with AI, support blog framework like Hexo, Hugo, etc.
 
 ## Features
-- Generate seo content (title, **description**, keywords) for blog in markdown format
+- Generate seo content (title, **description**, keywords) for blog posts in markdown format
 - Support blog framework like Hexo, Hugo, etc.
 - Support multiple language
 - Support multiple AI model like OpenAI, Qwen, Llama, etc. As long as the model provides openai-compatible API.
@@ -51,7 +51,7 @@ processor.process_markdown("path/to/post.md")
 
 ## Configuration
 
-Download the [example config file](blog-ai-tool.toml) and modify it to your needs. Put the config file in your blog root directory, then run the command.
+Download the [example config file](blog-ai-tool.toml) and modify it to your needs. Put the config file in your blog root directory (the same level as as your blog config file), then run the command.
 
 ## License
 
