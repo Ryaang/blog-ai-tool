@@ -1,7 +1,7 @@
 import os
 import argparse
 import tomli
-from blog_seo import process_blog_directory
+from .blog_seo import process_blog_directory
 
 def load_config(config_path: str = "blog-ai-tool.toml") -> dict:
     """Load configuration from TOML file"""
@@ -28,12 +28,12 @@ def main():
     config = load_config(args.config)
     
     # Command line arguments override config file
-    api_key = args.api_key or config["openai"]["api_key"] or os.environ.get("OPENAI_API_KEY")
+    api_key = args.api_key or os.environ.get("OPENAI_API_KEY") or config["openai"]["api_key"]
     if not api_key:
         raise ValueError("OpenAI API key must be provided via config file, --api-key, or OPENAI_API_KEY environment variable")
     
     directory = args.directory or config["blog"]["directory"]
-    base_url = args.base_url or config["openai"]["base_url"]
+    base_url = args.base_url or os.environ.get("OPENAI_BASE_URL") or config["openai"]["base_url"]
     model = args.model or config["openai"]["model"]
     language = args.language or config["blog"]["language"]
     
@@ -47,4 +47,4 @@ def main():
     )
 
 if __name__ == '__main__':
-    main() 
+    main()

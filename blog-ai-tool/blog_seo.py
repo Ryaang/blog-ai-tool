@@ -11,7 +11,7 @@ class HugoBlogProcessor:
         self.model = model
         self.language = language
         self.config = config
-        if self.config["metadata"]["language"] == "auto":
+        if self.config["blog"]["language"] == "auto":
             self.language = "the same as the blog content"
 
     def generate_metadata(self, content: str) -> Dict[str, str]:
