@@ -19,6 +19,10 @@ Tips: You can get free LLM model (Qwen, Gemini, Llama, etc.) from [Cloudflare](h
 pip install blog-ai-tool
 ```
 
+## 📚 Configuration
+
+Download the [example config file](blog-ai-tool.toml) and modify it to your needs. Put the config file in your blog root directory (the same level as as your blog config file), then run the command.
+
 ## 🚀 Usage
 
 ### Command Line
@@ -60,9 +64,6 @@ processor = HugoBlogProcessor(
 processor.process_markdown("path/to/post.md")
 ```
 
-## 📚 Configuration
-
-Download the [example config file](blog-ai-tool.toml) and modify it to your needs. Put the config file in your blog root directory (the same level as as your blog config file), then run the command.
 
 ## 🤝 Development
 

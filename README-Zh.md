@@ -19,6 +19,10 @@
 pip install blog-ai-tool
 ```
 
+## 📚 配置
+
+下载[示例配置文件](blog-ai-tool.toml)并根据需要修改。将配置文件放在博客根目录（与博客配置文件同级），然后运行命令。
+
 ## 🚀 使用方法
 
 ### 命令行
@@ -59,10 +63,6 @@ processor = HugoBlogProcessor(
 # 处理单个文件
 processor.process_markdown("path/to/post.md")
 ```
-
-## 📚 配置
-
-下载[示例配置文件](blog-ai-tool.toml)并根据需要修改。将配置文件放在博客根目录（与博客配置文件同级），然后运行命令。
 
 ## 🤝 开发
 
