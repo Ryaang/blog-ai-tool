@@ -29,16 +29,13 @@ pip install blog-ai-tool
 
 ```bash
 # 使用默认配置文件
-blog-ai-tool
-
-# 如果上述命令不起作用，请尝试使用以下命令
 python -m blog-ai-tool
 
 # 使用自定义配置文件
-blog-ai-tool --config my-config.toml
+python -m blog-ai-tool --config my-config.toml
 
 # 覆盖特定设置
-blog-ai-tool --directory content/posts --model gpt-4
+python -m blog-ai-tool --directory content/posts --model gpt-4
 ```
 
 免责声明：AI 可能会破坏你的博客，使用前请使用 git **备份**你的博客。同时，不建议在**未审核**生成内容的情况下使用此工具。发布前务必检查生成的内容。使用此工具的最佳时机是在你刚写完博客文章后、发布前。
@@ -67,6 +64,14 @@ processor.process_markdown("path/to/post.md")
 ## 🤝 开发
 
 我们诚挚欢迎对这个项目的任何贡献。请随时提交你的想法和建议。
+
+这个项目使用 [uv](https://docs.astral.sh/uv/) 构建，你可以使用以下命令安装依赖并运行项目： 
+
+```bash
+uv venv # 创建虚拟环境
+uv sync # 安装依赖
+uv run blog-ai-tool/main.py # 运行项目
+```
 
 ## 📝 许可证
 

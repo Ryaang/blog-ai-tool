@@ -29,16 +29,13 @@ Download the [example config file](blog-ai-tool.toml) and modify it to your need
 
 ```bash
 # Using default config file
-blog-ai-tool
-
-# if the above command is not working, try to use this following command instead
 python -m blog-ai-tool
 
 # Using custom config file
-blog-ai-tool --config my-config.toml
+python -m blog-ai-tool --config my-config.toml
 
 # Override specific settings
-blog-ai-tool --directory content/posts --model gpt-4
+python -m blog-ai-tool --directory content/posts --model gpt-4
 ```
 
 Disclaimer: AI may destory your blog, please use git to **backup** your blog before use. Also, its not recommended to use this tool without **reviewing** the generated content. Always check the generated content before publishing. The best time to use this tool is right after you have written the blog post, before publishing.
@@ -68,6 +65,14 @@ processor.process_markdown("path/to/post.md")
 ## 🤝 Development
 
 We sincerely welcome any contributions to this project. Please feel free to submit your ideas and suggestions.
+
+This project is built with [uv](https://docs.astral.sh/uv/), you can install the dependencies and run the project with the following command:
+
+```bash
+uv venv # create virtual environment
+uv sync # install dependencies
+uv run blog-ai-tool/main.py # run the project
+```
 
 ## 📝 License
 
